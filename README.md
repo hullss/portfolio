@@ -3,6 +3,8 @@
 Personal software developer portfolio showcasing selected projects, technical
 skills, and case studies.
 
+[View the live portfolio](https://vadymbahen.pages.dev/)
+
 ![Portfolio preview](assets/og.png)
 
 ## Built with
