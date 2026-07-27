@@ -1,0 +1,16 @@
+/sk /sk/ 301
+/uk /uk/ 301
+
+/sk/styles/* /styles/:splat 200
+/sk/assets/* /assets/:splat 200
+/sk/output/* /output/:splat 200
+/sk/script.js /script.js 200
+/sk/localization.js /localization.js 200
+/sk/* /index.html 200
+
+/uk/styles/* /styles/:splat 200
+/uk/assets/* /assets/:splat 200
+/uk/output/* /output/:splat 200
+/uk/script.js /script.js 200
+/uk/localization.js /localization.js 200
+/uk/* /index.html 200

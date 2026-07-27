@@ -13,15 +13,27 @@
   <meta property="og:image" content="https://vadymbahen.pages.dev/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="sk_SK">
+  <meta property="og:locale:alternate" content="uk_UA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vadym Bahen — Software Developer">
   <meta name="twitter:description" content="From interface to infrastructure.">
   <meta name="twitter:image" content="https://vadymbahen.pages.dev/assets/og.png">
   <link rel="canonical" href="https://vadymbahen.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://vadymbahen.pages.dev/">
+  <link rel="alternate" hreflang="sk" href="https://vadymbahen.pages.dev/sk/">
+  <link rel="alternate" hreflang="uk" href="https://vadymbahen.pages.dev/uk/">
+  <link rel="alternate" hreflang="x-default" href="https://vadymbahen.pages.dev/">
   <title>Vadym Bahen — Software Developer</title>
   <script>
     (() => {
       const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      const requestedLocale = new URLSearchParams(window.location.search).get("lang");
+      const pathLocale = window.location.pathname.split("/").filter(Boolean)[0];
+      document.documentElement.lang = ["sk", "uk"].includes(requestedLocale)
+        ? requestedLocale
+        : (["sk", "uk"].includes(pathLocale) ? pathLocale : "en");
       try {
         document.documentElement.dataset.theme = localStorage.getItem("portfolio-theme") || systemTheme;
       } catch {
@@ -34,6 +46,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles/style.css">
+  <script src="localization.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body id="top">
@@ -51,6 +64,11 @@
         <a class="nav-cta" href="#contact">Let's talk</a>
       </div>
       <div class="nav-actions">
+        <div class="language-switcher" role="group" aria-label="Language">
+          <a href="https://vadymbahen.pages.dev/" hreflang="en" lang="en" data-lang="en">EN</a>
+          <a href="https://vadymbahen.pages.dev/sk/" hreflang="sk" lang="sk" data-lang="sk">SK</a>
+          <a href="https://vadymbahen.pages.dev/uk/" hreflang="uk" lang="uk" data-lang="uk">UA</a>
+        </div>
         <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Switch color theme">
           <span class="theme-icon theme-sun" aria-hidden="true">☀</span>
           <span class="theme-icon theme-moon" aria-hidden="true">☾</span>

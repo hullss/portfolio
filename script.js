@@ -11,16 +11,25 @@ const skills = [
   ["TypeScript", "language", 1]
 ];
 
+const localeStrings = window.portfolioLocale || {
+  categories: {},
+  themeTarget: target => `Switch to ${target} theme`,
+  projectNoun: count => count === 1 ? "project" : "projects",
+  usedIn: count => `Used in ${count} featured ${count === 1 ? "project" : "projects"}`
+};
+
 const themeToggle = document.querySelector(".theme-toggle");
 const themeColor = document.querySelector('meta[name="theme-color"]');
 const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
 
 function applyTheme(theme, persist = false) {
   const isLight = theme === "light";
+  const targetTheme = isLight ? "dark" : "light";
+  const themeLabel = localeStrings.themeTarget(targetTheme);
   document.documentElement.dataset.theme = theme;
   themeToggle.setAttribute("aria-pressed", String(isLight));
-  themeToggle.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} theme`);
-  themeToggle.title = `Switch to ${isLight ? "dark" : "light"} theme`;
+  themeToggle.setAttribute("aria-label", themeLabel);
+  themeToggle.title = themeLabel;
   themeColor.content = isLight ? "#F4F7F6" : "#0B1220";
   if (persist) {
     try {
@@ -55,9 +64,9 @@ skills.forEach(([name, category, projectCount]) => {
   ).join("");
   row.innerHTML = `
     <span class="skill-name" role="cell"><i class="pk">PK</i>${name}</span>
-    <span class="skill-category" role="cell">${category}</span>
-    <span class="usage-wrap" role="cell" aria-label="Used in ${projectCount} featured ${projectCount === 1 ? "project" : "projects"}">
-      <span class="usage-dots">${dots}</span><em>${projectCount} ${projectCount === 1 ? "project" : "projects"}</em>
+    <span class="skill-category" role="cell">${localeStrings.categories[category] || category}</span>
+    <span class="usage-wrap" role="cell" aria-label="${localeStrings.usedIn(projectCount)}">
+      <span class="usage-dots">${dots}</span><em>${projectCount} ${localeStrings.projectNoun(projectCount)}</em>
     </span>`;
   skillRows.append(row);
 });
