@@ -1,14 +1,15 @@
 const skills = [
   ["Java", "language", 5],
   ["Git", "workflow", 6],
-  ["Spring Boot", "framework", 3],
-  ["SQL / MySQL", "database", 3],
-  ["REST APIs", "architecture", 3],
-  ["Docker", "infrastructure", 3],
-  ["JavaFX", "framework", 3],
+  ["Spring Boot", "framework", 4],
+  ["PostgreSQL / MySQL", "database", 4],
+  ["REST APIs", "architecture", 4],
+  ["Docker", "infrastructure", 4],
+  ["JavaFX", "framework", 2],
   ["Python", "language", 2],
-  ["JUnit / Mockito", "testing", 1],
-  ["TypeScript", "language", 1]
+  ["JUnit / Mockito", "testing", 2],
+  ["TypeScript", "language", 2],
+  ["React", "framework", 1]
 ];
 
 const localeStrings = window.portfolioLocale || {
